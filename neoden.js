@@ -21,6 +21,7 @@ function handleFileSelect(evt) {
 				alert('Wrong file or unit system');
 				return -1;
 			}
+			header.innerHTML = '';
 			for (var i = 0; i < 13; i++) header.innerHTML += fileLines[i] + '<br />';
 			fileLines[12] = fileLines[12].split('"');
 			for (var i = 0; i < fileLines[12].length; i++) {
