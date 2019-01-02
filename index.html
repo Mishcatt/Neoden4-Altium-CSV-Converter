@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Neoden4 Altium CSV Converter</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="stylesheet" href="neoden.css" />
+</head>
+<body>
+<h4>Neoden4 Altium CSV Converter</h4>
+<br />
+<input type="file" id="files" name="files[]" accept=".csv" onchange="handleFileSelect(event)" />
+<br />
+<div id="header">Units used: mm<br />Fields used: Designator, Footprint, Mid X, Mid Y, Layer, Rotation, Comment/Value<br /></div>
+<br />
+<button id="convertButton" type="button" onclick="convert()" disabled>Convert and Download</button>
+<br />
+<script src="neoden.js" type="text/javascript"></script>
+</body>
+</head>
