@@ -1,7 +1,7 @@
 # Neoden4-Altium-CSV-Converter
 (i'm not good with names)
 
-A converter for CSV files created by Altium Designer for Neoden4 machines.
+A converter for Altium Designer CSV files for Neoden4 machines.
 
 Open the index.html in a web browser, then choose a pick-and-place CSV file created by Altium Designer and click the button.
 
