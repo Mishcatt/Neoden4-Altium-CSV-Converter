@@ -45,7 +45,7 @@ function handleFileSelect(evt) {
 }
 
 function convert() {
-	convertedFile = 'Designator,Footprint,Mid X,Mid Y,Layer,Rotation,Comment\n';
+	convertedFile = 'Designator,Footprint,Mid X,Mid Y,Layer,Rotation,Comment\r\n';
 	
 	for (var i = 13; i < fileLines.length; i++) {
 		if (fileLines[i]) {
@@ -69,7 +69,7 @@ function convert() {
 			convertedFile += parseFloat(fileLines[i][valueList.Mid_Y]).toFixed(2) + ','; // Mid Y
 			convertedFile += 'T' + ','; // Layer
 			convertedFile += fileLines[i][valueList.Rotation] + ','; // Rotation
-			convertedFile += fileLines[i][valueList.Comment] + '\n'; // Comment
+			convertedFile += fileLines[i][valueList.Comment] + '\r\n'; // Comment
 		}
 	}
 	download(convertedFile, "Neoden_converted.csv");
