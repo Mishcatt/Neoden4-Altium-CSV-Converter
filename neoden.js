@@ -52,13 +52,13 @@ function convert() {
 			fileLines[i] = fileLines[i].split('"');
 
 			if (fileLines[i][valueList.Designator]) {
-				fileLines[i][valueList.Designator] = fileLines[i][valueList.Designator].replace(/[,/]/g,''); // Designator
+				fileLines[i][valueList.Designator] = fileLines[i][valueList.Designator].replace(/[,]/g,''); // Designator
 			}
 			if (fileLines[i][valueList.Footprint]) {
-				fileLines[i][valueList.Footprint] = fileLines[i][valueList.Footprint].replace(/[,/]/g,''); // Footprint
+				fileLines[i][valueList.Footprint] = fileLines[i][valueList.Footprint].replace(/[,]/g,''); // Footprint
 			}
 			if (fileLines[i][valueList.Comment]) {
-				fileLines[i][valueList.Comment] = fileLines[i][valueList.Comment].replace(/[,/]/g,''); // Comment
+				fileLines[i][valueList.Comment] = fileLines[i][valueList.Comment].replace(/[,]/g,''); // Comment
 			}
 
 			// Designator,Footprint,Mid X,Mid Y,Layer,Rotation,Comment/Value
