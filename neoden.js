@@ -10,7 +10,7 @@ function handleFileSelect(evt) {
 	valueList = {Designator:-1, Footprint:-1, Mid_X:-1, Mid_Y:-1, Layer:-1, Rotation:-1, Comment:-1};
 	var file = evt.target.files[0]; // FileList object
 	document.getElementById('convertButton').disabled = true;
-	if (file && file.type.match('text/csv')) {
+	if (file && ( file.type.match('text/csv') || file.type.match('application/vnd.ms-excel') ) ) {
 		var reader = new FileReader();
 		// Closure to capture the file information.
 		reader.readAsText(file, "UTF-8");
