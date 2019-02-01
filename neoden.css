@@ -2,7 +2,7 @@ body {
 	background-color: #b3b3b3;
 	text-align: center;
 }
-input {
+input[type=file] {
 	display: block;
 	margin-left: auto;
     margin-right: auto;
