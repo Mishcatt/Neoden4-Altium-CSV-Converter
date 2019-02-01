@@ -72,7 +72,7 @@ function convert() {
 			convertedFile += fileLines[i][valueList.Footprint] + ','; // Footprint
 			convertedFile += parseFloat(fileLines[i][valueList.Mid_X]).toFixed(2) + ','; // Mid X
 			convertedFile += parseFloat(fileLines[i][valueList.Mid_Y]).toFixed(2) + ','; // Mid Y
-			if (fileLines[i][valueList.Designator] == "TopLayer") {
+			if (fileLines[i][valueList.Layer] == "TopLayer") {
 				convertedFile += 'T' + ','; // Top Layer
 			} else {
 				convertedFile += 'B' + ','; // Bottom Layer
