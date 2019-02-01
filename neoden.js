@@ -27,8 +27,13 @@ function handleFileSelect(evt) {
 			for (var i = 0; i < fileLines[12].length; i++) {
 				if (fileLines[12][i].search('Designator') == 0) valueList.Designator = i;
 				if (fileLines[12][i].search('Footprint') == 0) valueList.Footprint = i;
-				if (fileLines[12][i].search('Center-X') == 0) valueList.Mid_X = i;
-				if (fileLines[12][i].search('Center-Y') == 0) valueList.Mid_Y = i;
+				if (document.getElementById("rotateCheck").checked) {
+					if (fileLines[12][i].search('Center-X') == 0) valueList.Mid_Y = i;
+					if (fileLines[12][i].search('Center-Y') == 0) valueList.Mid_X = i;
+				} else {
+					if (fileLines[12][i].search('Center-X') == 0) valueList.Mid_X = i;
+					if (fileLines[12][i].search('Center-Y') == 0) valueList.Mid_Y = i;
+				}
 				if (fileLines[12][i].search('Layer') == 0) valueList.Layer = i;
 				if (fileLines[12][i].search('Rotation') == 0) valueList.Rotation = i;
 				if (fileLines[12][i].search('Comment') == 0) valueList.Comment = i;
