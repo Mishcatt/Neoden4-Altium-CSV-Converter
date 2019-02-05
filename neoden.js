@@ -2,6 +2,7 @@ var fileString;
 var fileLines;
 var convertedFile;
 var valueList = {Designator:-1, Footprint:-1, Mid_X:-1, Mid_Y:-1, Layer:-1, Rotation:-1, Comment:-1};
+var rotate = 0;
 
 function handleFileSelect(evt) {
 	header.innerHTML = 'Units used: mm<br />Fields used: Designator, Footprint, Mid X, Mid Y, Layer, Rotation, Comment/Value<br />';
@@ -27,10 +28,13 @@ function handleFileSelect(evt) {
 			for (var i = 0; i < fileLines[12].length; i++) {
 				if (fileLines[12][i].search('Designator') == 0) valueList.Designator = i;
 				if (fileLines[12][i].search('Footprint') == 0) valueList.Footprint = i;
+				document.getElementById("rotateCheck").disabled = 1;
 				if (document.getElementById("rotateCheck").checked) {
+					rotate = 1;
 					if (fileLines[12][i].search('Center-X') == 0) valueList.Mid_Y = i;
 					if (fileLines[12][i].search('Center-Y') == 0) valueList.Mid_X = i;
 				} else {
+					rotate = 0;
 					if (fileLines[12][i].search('Center-X') == 0) valueList.Mid_X = i;
 					if (fileLines[12][i].search('Center-Y') == 0) valueList.Mid_Y = i;
 				}
@@ -77,7 +81,9 @@ function convert() {
 			} else {
 				convertedFile += 'B,'; // Bottom Layer
 			}
-			convertedFile += fileLines[i][valueList.Rotation] + ','; // Rotation
+			var tempRotation = parseInt(fileLines[i][valueList.Rotation])+(90*rotate);
+			if (tempRotation >= 360) tempRotation -= 360;
+			convertedFile += tempRotation + ','; // Rotation
 			convertedFile += fileLines[i][valueList.Comment] + '\r\n'; // Comment
 		}
 	}
