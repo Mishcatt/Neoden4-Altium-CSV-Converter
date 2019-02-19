@@ -74,17 +74,28 @@ function convert() {
 
 			convertedFile += fileLines[i][valueList.Designator] + ','; // Designator
 			convertedFile += fileLines[i][valueList.Footprint] + ','; // Footprint
-			convertedFile += parseFloat(fileLines[i][valueList.Mid_X]).toFixed(2) + ','; // Mid X
-			convertedFile += parseFloat(fileLines[i][valueList.Mid_Y]).toFixed(2) + ','; // Mid Y
+			if (rotate == 1) {
+				convertedFile += parseFloat(fileLines[i][valueList.Mid_X]*(-1)).toFixed(2) + ','; // Mid X
+				convertedFile += parseFloat(fileLines[i][valueList.Mid_Y]).toFixed(2) + ','; // Mid Y
+			} else {
+				convertedFile += parseFloat(fileLines[i][valueList.Mid_X]).toFixed(2) + ','; // Mid X
+				convertedFile += parseFloat(fileLines[i][valueList.Mid_Y]).toFixed(2) + ','; // Mid Y
+			}
 			if (fileLines[i][valueList.Layer] == 'TopLayer') {
 				convertedFile += 'T,'; // Top Layer
+				// if (rotate == 3) rotate = 1;
 			} else {
 				convertedFile += 'B,'; // Bottom Layer
+				// if (rotate == 1) rotate = 3;
 			}
 			var tempRotation = parseInt(fileLines[i][valueList.Rotation])+(90*rotate);
 			if (tempRotation >= 360) tempRotation -= 360;
 			convertedFile += tempRotation + ','; // Rotation
-			convertedFile += fileLines[i][valueList.Comment] + '\r\n'; // Comment
+			if (fileLines[i][valueList.Comment] == "") {
+				convertedFile += 'x\r\n'; // Comment
+			} else {
+				convertedFile += fileLines[i][valueList.Comment] + '\r\n'; // Comment
+			}
 		}
 	}
 	download(convertedFile, "Neoden_converted.csv");
